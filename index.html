@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anatomie - AI Shopping Assistant | Luxury Travel Clothing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Anatomie Luxury Brand Colors */
+            --primary-black: #1a1a1a;
+            --soft-black: #2d2d2d;
+            --charcoal: #4a4a4a;
+            --warm-beige: #f5f0eb;
+            --cream: #faf8f6;
+            --gold: #c9a961;
+            --rose-gold: #b76e79;
+            --soft-white: #ffffff;
+            --light-gray: #e8e4e0;
+            --medium-gray: #8a8a8a;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            color: var(--soft-black);
+            background: var(--cream);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: var(--soft-white);
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--primary-black);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .tagline {
+            font-size: 0.85rem;
+            color: var(--medium-gray);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--warm-beige) 0%, var(--cream) 100%);
+            padding: 6rem 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201, 169, 97, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            color: var(--primary-black);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 strong {
+            font-weight: 600;
+            color: var(--gold);
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--charcoal);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-black);
+            color: var(--soft-white);
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            border: 2px solid var(--primary-black);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gold);
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        .cta-button:hover {
+            border-color: var(--gold);
+            color: var(--soft-white);
+        }
+
+        /* Features Section */
+        .features {
+            max-width: 1400px;
+            margin: 5rem auto;
+            padding: 0 3rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 400;
+            color: var(--primary-black);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--charcoal);
+            font-weight: 300;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .feature-card {
+            background: var(--soft-white);
+            padding: 3rem 2.5rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid var(--light-gray);
+            position: relative;
+        }
+
+        .feature-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.4s ease;
+        }
+
+        .feature-card:hover::after {
+            width: 80%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            color: var(--primary-black);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .feature-card p {
+            color: var(--charcoal);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        /* Demo Section */
+        .demo-section {
+            background: var(--primary-black);
+            padding: 5rem 3rem;
+            margin: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .demo-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 0%, rgba(201, 169, 97, 0.1) 100%);
+        }
+
+        .demo-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .demo-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: var(--soft-white);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .demo-description {
+            text-align: center;
+            color: var(--light-gray);
+            font-size: 1.15rem;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .demo-description strong {
+            color: var(--gold);
+        }
+
+        .chat-preview {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(201, 169, 97, 0.2);
+            padding: 4rem 3rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .chat-preview p {
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .chat-preview small {
+            color: var(--light-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Use Cases */
+        .use-cases {
+            max-width: 1400px;
+            margin: 5rem auto;
+            padding: 0 3rem;
+        }
+
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .use-case {
+            background: var(--soft-white);
+            padding: 2.5rem;
+            border-left: 3px solid var(--gold);
+            transition: all 0.3s ease;
+        }
+
+        .use-case:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transform: translateX(5px);
+        }
+
+        .use-case-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .use-case h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--primary-black);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .use-case p {
+            color: var(--charcoal);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        /* Testimonial Section */
+        .testimonial {
+            background: var(--warm-beige);
+            padding: 5rem 3rem;
+            margin: 5rem 0;
+        }
+
+        .testimonial-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .testimonial blockquote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--primary-black);
+            line-height: 1.6;
+            font-style: italic;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .testimonial-author {
+            color: var(--charcoal);
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .testimonial-stars {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Stats */
+        .stats {
+            max-width: 1400px;
+            margin: 5rem auto;
+            padding: 0 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-item h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            color: var(--charcoal);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 300;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-black);
+            color: var(--light-gray);
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--soft-white);
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+        }
+
+        .footer p {
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--soft-white);
+        }
+
+        .footer-divider {
+            width: 100px;
+            height: 1px;
+            background: var(--gold);
+            margin: 2rem auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .features-grid,
+            .use-cases-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .feature-card,
+        .use-case {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+        .feature-card:nth-child(4) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div>
+                <div class="logo">ANATOMIE</div>
+                <div class="tagline">Essential Travel Clothes</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Your Personal <strong>Style Concierge</strong></h1>
+            <p>Experience effortless shopping with our AI-powered assistant. Get instant style advice, product recommendations, and personalized service—available 24/7 to help you discover your perfect travel wardrobe.</p>
+            <a href="#demo" class="cta-button">Experience the Assistant</a>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="section-header">
+            <h2>Elevated Shopping Experience</h2>
+            <p>Intelligent assistance, tailored to your journey</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <span class="feature-icon">✨</span>
+                <h3>Instant Style Guidance</h3>
+                <p>Receive personalized recommendations based on your travel plans, preferences, and body type. Our AI understands your needs instantly.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">🌍</span>
+                <h3>Travel-Smart Suggestions</h3>
+                <p>Get curated outfit combinations perfect for your destination. From European getaways to tropical escapes, we've got you covered.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">💎</span>
+                <h3>Size & Fit Expertise</h3>
+                <p>Find your perfect fit with intelligent sizing guidance. Ask about fabrics, care instructions, and styling tips—all in one conversation.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">🎁</span>
+                <h3>Seamless Shopping</h3>
+                <p>Track orders, manage returns, and get real-time assistance. Your questions answered instantly, any time of day or night.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="demo-section" id="demo">
+        <div class="demo-content">
+            <h2>Try Our AI Shopping Assistant</h2>
+            <p class="demo-description">
+                Click the <strong>chat icon</strong> in the bottom right corner to start your personalized shopping experience. Ask about sizing, styling, or anything else!
+            </p>
+            <div class="chat-preview">
+                <p>👉 Your AI Style Concierge awaits in the corner</p>
+                <small>Available 24/7 • Instant Responses • Personalized Service</small>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section class="use-cases">
+        <div class="section-header">
+            <h2>How We Help You Shop Smarter</h2>
+        </div>
+        <div class="use-cases-grid">
+            <div class="use-case">
+                <span class="use-case-icon">👗</span>
+                <h3>Style Consultation</h3>
+                <p>"What should I pack for a week in Paris?" Get instant capsule wardrobe suggestions that mix, match, and maximize your travel style.</p>
+            </div>
+            <div class="use-case">
+                <span class="use-case-icon">📏</span>
+                <h3>Size & Fit Guidance</h3>
+                <p>"I'm between sizes—what should I order?" Our assistant provides detailed measurements and fit advice for every piece in our collection.</p>
+            </div>
+            <div class="use-case">
+                <span class="use-case-icon">🧳</span>
+                <h3>Travel Planning</h3>
+                <p>"What fabrics won't wrinkle on a long flight?" Learn about our performance fabrics and get packing tips from our AI travel expert.</p>
+            </div>
+            <div class="use-case">
+                <span class="use-case-icon">🔄</span>
+                <h3>Order Support</h3>
+                <p>"Where's my order?" or "How do I return this?" Get instant updates on shipping, returns, and exchanges—no waiting on hold.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="testimonial">
+        <div class="testimonial-content">
+            <div class="testimonial-stars">★★★★★</div>
+            <blockquote>
+                "The AI assistant helped me plan my entire Mediterranean wardrobe in minutes. It's like having a personal stylist who knows exactly what I need!"
+            </blockquote>
+            <p class="testimonial-author">— Sarah M., Frequent Traveler</p>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+        <div class="stat-item">
+            <h4>24/7</h4>
+            <p>Always Available</p>
+        </div>
+        <div class="stat-item">
+            <h4>&lt;30s</h4>
+            <p>Response Time</p>
+        </div>
+        <div class="stat-item">
+            <h4>98%</h4>
+            <p>Satisfaction Rate</p>
+        </div>
+        <div class="stat-item">
+            <h4>20yrs</h4>
+            <p>Travel Expertise</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-logo">ANATOMIE</div>
+        <p>Essential Travel Clothes | Women's Luxury Travel Clothing</p>
+        <div class="footer-divider"></div>
+        <p>AI Shopping Experience powered by <a href="https://thynkwise.co.in" target="_blank">ThynkWise</a></p>
+        <p style="margin-top: 1.5rem; font-size: 0.85rem; opacity: 0.7;">© 2024 Anatomie. Loved by travelers for nearly 20 years.</p>
+    </footer>
+
+    <!-- ThynkBot Widget -->
+    <script src="https://thynkbot.thynkwise.co.in/embed.js" data-bot-id="ecc795c5-5647-4bf6-8496-2f0575087248"></script>
+</body>
+</html>
